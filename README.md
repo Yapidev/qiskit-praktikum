@@ -8,6 +8,7 @@ Kumpulan praktikum Komputer Kuantum menggunakan [Qiskit](https://www.ibm.com/qua
 |---|---|---|
 | `01_hello_qubit.py` | Sirkuit kuantum pertama: gate X, H, pengukuran, dan Bell state | Simulator lokal |
 | `02_run_on_ibm.py` | Bell state di perangkat kuantum nyata IBM, transpilasi sirkuit | IBM Quantum (cloud) |
+| `03_deutsch_jozsa.py` | Algoritma Deutsch-Jozsa: menentukan fungsi konstan/balanced dengan satu panggilan oracle | Simulator lokal |
 
 ## Setup
 
@@ -36,6 +37,9 @@ python 02_run_on_ibm.py --save
 
 # Praktikum 2: jalankan di perangkat nyata
 python 02_run_on_ibm.py
+
+# Praktikum 3: algoritma Deutsch-Jozsa di simulator lokal
+python 03_deutsch_jozsa.py
 ```
 
 API key didapat dari [quantum.ibm.com](https://quantum.ibm.com) (Account Settings → API token). Token tersimpan lokal di komputer, tidak masuk ke repo.
@@ -56,9 +60,17 @@ Bell state di perangkat nyata `ibm_fez` (1024 shots):
 
 Hanya `00` dan `11` yang muncul ~50/50 sesuai teori; sedikit `01`/`10` adalah noise hardware (dekoherensi dan readout error) — perbedaan inilah yang membedakan simulasi dari perangkat kuantum fisik.
 
+Deutsch-Jozsa di simulator lokal (deterministik, tanpa noise):
+
+```
+konstan   f(x)=0    {'00': 100}    konstan   BENAR
+konstan   f(x)=1    {'00': 100}    konstan   BENAR
+balanced  f(x)=01   {'10': 100}    balanced  BENAR
+balanced  f(x)=11   {'11': 100}    balanced  BENAR
+```
+
 ## Materi Berikutnya (roadmap)
 
 - Teleportasi kuantum
-- Deutsch-Jozsa
 - GHZ state
 - VQE / QAOA

@@ -9,6 +9,7 @@ Kumpulan praktikum Komputer Kuantum menggunakan [Qiskit](https://www.ibm.com/qua
 | `01_hello_qubit.py` | Sirkuit kuantum pertama: gate X, H, pengukuran, dan Bell state | Simulator lokal |
 | `02_run_on_ibm.py` | Bell state di perangkat kuantum nyata IBM, transpilasi sirkuit | IBM Quantum (cloud) |
 | `03_deutsch_jozsa.py` | Algoritma Deutsch-Jozsa: menentukan fungsi konstan/balanced dengan satu panggilan oracle | Simulator lokal |
+| `04_deutsch_jozsa_ibm.py` | Deutsch-Jozsa di chip kuantum nyata dengan analisis noise | IBM Quantum (cloud) |
 
 ## Setup
 
@@ -40,6 +41,9 @@ python 02_run_on_ibm.py
 
 # Praktikum 3: algoritma Deutsch-Jozsa di simulator lokal
 python 03_deutsch_jozsa.py
+
+# Praktikum 4: Deutsch-Jozsa di chip kuantum nyata (butuh API key)
+python 04_deutsch_jozsa_ibm.py
 ```
 
 API key didapat dari [quantum.ibm.com](https://quantum.ibm.com) (Account Settings → API token). Token tersimpan lokal di komputer, tidak masuk ke repo.
@@ -68,6 +72,15 @@ konstan   f(x)=1    {'00': 100}    konstan   BENAR
 balanced  f(x)=01   {'10': 100}    balanced  BENAR
 balanced  f(x)=11   {'11': 100}    balanced  BENAR
 ```
+
+Deutsch-Jozsa di perangkat nyata (contoh fake backend dengan noise):
+
+```
+konstan   f(x)=0    00:1020, 01:3, 10:1    konstan   BENAR
+balanced  f(x)=01   10:1014, 00:8, 11:2    balanced  BENAR
+```
+
+Noise membuat hasil tidak lagi 100%, tapi kesimpulan algoritma tetap bisa ditarik dari pola dominan.
 
 ## Materi Berikutnya (roadmap)
 

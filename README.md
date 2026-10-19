@@ -27,6 +27,30 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 pip install qiskit qiskit-ibm-runtime qiskit-aer
 ```
 
+## Setup API Key IBM Quantum
+
+Praktikum 2 dan 4 membutuhkan akun IBM Quantum. Praktikum 1 dan 3 jalan lokal tanpa akun.
+
+1. **Buat akun** di [quantum.ibm.com](https://quantum.ibm.com) — gratis (Open Plan), cukup email dan verifikasi.
+
+2. **Ambil API key**: setelah login, klik ikon profil (pojok kanan atas) → **Account Settings** → **API token** → salin token.
+
+3. **Simpan token** di komputer (sekali saja):
+   ```powershell
+   python 02_run_on_ibm.py --save
+   ```
+   Saat diminta, tempel (paste) token lalu Enter. Token tersimpan lokal di profil user Windows — tidak masuk ke repo, tidak ter-commit ke git.
+
+4. **Cek bahwa tersambung**: jalankan praktikum 2 seperti biasa. Kalau daftar perangkat muncul, API key sudah aktif:
+   ```powershell
+   python 02_run_on_ibm.py
+   ```
+
+Catatan keamanan:
+- Jangan pernah paste token ke chat, screenshot, atau file yang di-commit ke GitHub.
+- Kalau ragu token ter-expose, regenerate di Account Settings — token lama langsung mati, lalu simpan ulang dengan `--save`.
+- Open Plan gratis memberi kuota bulanan ~10 menit eksekusi di perangkat nyata; simulator lokal tidak terbatas.
+
 ## Cara Menjalankan
 
 ```powershell
